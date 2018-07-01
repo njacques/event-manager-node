@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+const express = require("express");
+const userModel = require("../models/users");
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  userModel.fetchAll().then(users => res.send(users));
+});
+
+router.post("/", (req, res) => {
+  console.log(req.body);
+  userModel
+    .add(req.body.email, req.body.password)
+    .then(() => res.send("User added!"));
 });
 
 module.exports = router;
