@@ -1,5 +1,5 @@
 -- TABLE
-CREATE TABLE event
+CREATE TABLE events
 (
   id integer primary key,
   event_type TEXT NOT NULL,
@@ -8,14 +8,14 @@ CREATE TABLE event
   speaker TEXT,
   host TEXT,
   published INTEGER NOT NULL DEFAULT 0,
-  created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL
+  createdAt TEXT NOT NULL,
+  updatedAt TEXT NOT NULL
 );
 
-CREATE TABLE user
+CREATE TABLE users
 (
   email TEXT PRIMARY KEY,
   passwordHash TEXT NOT NULL,
-  created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL
+  createdAt TEXT NOT NULL,
+  updatedAt TEXT NOT NULL
 );

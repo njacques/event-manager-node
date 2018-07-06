@@ -1,15 +1,21 @@
-const sqlite3 = require("sqlite3").verbose();
+const Sequelize = require("sequelize");
+const sequelize = require("../sequelize");
 
-const db = new sqlite3.Database("../db/event_manager.sqlt");
-
-module.exports = {
-  seedDB() {
-    db.run(
-      "INSERT INTO event (event_type, event_date, title, speaker, host) VALUES ",
-      {
-        $id: 2,
-        $name: "bar"
-      }
-    );
+const Event = sequelize.define(
+  "event",
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    event_type: Sequelize.STRING,
+    event_date: Sequelize.STRING,
+    title: Sequelize.STRING,
+    speaker: Sequelize.STRING,
+    host: Sequelize.STRING,
+    published: Sequelize.BOOLEAN
   }
-};
+);
+
+module.exports = Event;
